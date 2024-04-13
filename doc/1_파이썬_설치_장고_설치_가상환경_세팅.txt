@@ -11,6 +11,7 @@ cmd에서 python 입력, 파이썬이 정상 설치되었는지 확인...
 가상환경 생성 : virtualenv myenv => myenv라는 가상환경 생성
 가상환경 구동 : cd C:\Users\user\myenv\Script 들어가서 
     activate.bat 파일 실행
+    mac : source activate
     '(myenv)' 이것이 앞에 붙으면 가상환경 실행 성공
 가상환경에 장고 설치 : pip install Django 가상환경 구동하고 작동해야 함.
 파이썬 실행 : cmd에서 python 입력 후 import django 입력, 문제 없으면 장고 설치 완료.
