@@ -1,0 +1,53 @@
+myenv 가상환경은 C:\Users\user\myenv\Scripts 에서
+activate.bat 을 구동시키고
+
+mkdir work 명령어로 폴더를 만들고
+django-admin startproject mysite 로 장고프로젝트를 생성해주고
+cd work\mysite 로 폴더를 이동해준 후
+py manage.py runserver 로 경량서버를 구동해준다.
+
+하나의 프로젝트에 여러 앱(기능)을 생성할 수 있다.
+py manage.py startapp polls 명령어로 polls 앱을 생성
+
+가상환경 구동 : cd C:\Users\user\myenv\Script 들어가서 
+    activate.bat 파일 실행
+
+장고프로젝트 생성 : 원하는 폴더에서 
+    django-admin startproject mysite 명령어로 mysite 프로젝트 생성
+    cd mysite로 이동
+    vscode에서 방금 생성한 mysite 폴더 열기
+
+경량서버 구동 : mysite 폴더에서 py manage.py runserver (원하는 포트번호, 없으면 기본 8000)
+    ex) py manage.py runserver 8080
+    localhost:8000으로 접속테스트
+
+//프로젝트는 앱의 묶음. 앱은 특정 기능
+프로젝트 생성 : py manage.py startapp polls => polls 앱 생성
+
+첫 번째 뷰 생성 :
+    polls/views.py 파일을 열어서 아래 코드 입력
+    from django.http import HttpResponse
+
+    def index(request):
+        return HttpResponse("Hello, world. You're at the polls index.")
+
+    polls/urls.py 파일을 열어서 아래 코드 입력
+    from django.urls import path
+
+    from . import views
+
+    urlpatterns = [
+        path("", views.index, name="index"),
+    ]
+
+    mysite/urls.py 파일을 열어서 아래 코드 입력
+    from django.contrib import admin
+    from django.urls import include, path
+
+    urlpatterns = [
+        path("polls/", include("polls.urls")),
+        path("admin/", admin.site.urls),
+    ]
+
+경량서버 구동 : 서버 구동 후 localhost:8000/polls 입력
+    "Hello, world. You're at the polls index." 가 출력되면 정상

@@ -1,0 +1,16 @@
+https://docs.djangoproject.com/ko/5.0/intro/overview/
+
+언어 ko로 바꾸고 참고...
+
+1. 파이썬 설치(쉬우믜로 생략)
+cmd에서 python 입력, 파이썬이 정상 설치되었는지 확인...
+파이썬 설치시 PATH를 잡아주지 않았다면 PATH를 잡아줘야 함.
+
+2. 장고 설치
+가상환경 설치 : pip install virtualenv
+가상환경 생성 : virtualenv myenv => myenv라는 가상환경 생성
+가상환경 구동 : cd C:\Users\user\myenv\Script 들어가서 
+    activate.bat 파일 실행
+    '(myenv)' 이것이 앞에 붙으면 가상환경 실행 성공
+가상환경에 장고 설치 : pip install Django 가상환경 구동하고 작동해야 함.
+파이썬 실행 : cmd에서 python 입력 후 import django 입력, 문제 없으면 장고 설치 완료.
