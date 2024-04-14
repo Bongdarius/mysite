@@ -1,0 +1,27 @@
+1. postgresql 설치
+
+homebrew 업데이트 : brew update
+postgresql 설치 : brew install postgresql
+postgresql 환경변수 설정 : 
+    echo 'export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"' >> ~/.zshrc
+    source ~/.zshrc
+    export LDFLAGS="-L/opt/homebrew/opt/postgresql@14/lib"
+    export CPPFLAGS="-I/opt/homebrew/opt/postgresql@14/include"
+postgresql 설치 확인 : postgres --version
+
+2. 서버 기동
+    brew services start postgresql@14
+    postgresql 사용 : psql postgres
+
+3. 서버 중지
+    brew services stop postgresql@14
+
+주의 : dbeaver 등의 IDE를 통해 접속할 경우 접속 주소는 
+    주소 : localhost:5432
+    DB : postgres
+    user : (mac 사용자명)
+    pw : 없음
+
+user 명을 알 수 없는 경우(psql postgresq로 접속 후)
+사용자 조회 : select current_user;
+디비명 조회 : select current_database();
