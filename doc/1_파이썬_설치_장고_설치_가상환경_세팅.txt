@@ -9,7 +9,7 @@ cmd에서 python 입력, 파이썬이 정상 설치되었는지 확인...
 2. 장고 설치
 가상환경 설치 : pip install virtualenv
 가상환경 생성 : virtualenv myenv => myenv라는 가상환경 생성
-가상환경 구동 : cd C:\Users\user\myenv\Script 들어가서 
+가상환경 구동 : cd C:\Users\user\myenv\Scripts 들어가서 
     activate.bat 파일 실행
     mac : source activate
     '(myenv)' 이것이 앞에 붙으면 가상환경 실행 성공
