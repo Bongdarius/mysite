@@ -1,0 +1,20 @@
+brew update
+    설치 가능한 openjdk 버전 확인 : brew search openjdk
+    jdk@11 설치 : brew install openjdk@11
+
+openjdk 심볼릭 링크 설정
+    sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+
+환경 변수 설정
+    echo 'export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"' >> ~/.zshrc
+    export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
+
+java --version
+javac --version
+
+톰캣 설치(쉬우므로 생략)
+    카탈리나홈 환경변수 설정 : export CATALINA_HOME=/Users/dari/tomcat
+    PATH 설정 : export PATH=$PATH:$CATALINA_HOME/bin
+
+startup.sh
+shutdown.sh

@@ -26,6 +26,69 @@ psycopg2 설치
     pip install psycopg2
     python에서 postgresql을 사용하기 위해서는 필수적인 패키지
 
-migrate
+데이터베이스 테이블 생성
     python manage.py migrate
     장고의 설정에 따라 데이터베이스 테이블이 생성된다.
+
+데이터베이스 모델 만들기
+    polls/models.py
+    from django.db import models
+
+    class Question(models.Model):
+        question_text = models.CharField(max_length=200) #문자, 최대길이 200자
+        pub_date = models.DateTimeField("date published")
+
+
+    class Choice(models.Model):
+        question = models.ForeignKey(Question, on_delete=models.CASCADE) #포린키 설정
+        choice_text = models.CharField(max_length=200)
+        votes = models.IntegerField(default=0)
+
+인스톨드앱 추가
+    mystie/settings.py
+    INSTALLED_APPS = [
+        "polls.apps.PollsConfig", #추가된 항목, polls앱의 apps.py의 PollsConfig를 등록한다.
+        "django.contrib.admin",
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
+        "django.contrib.sessions",
+        "django.contrib.messages",
+        "django.contrib.staticfiles",
+    ]     
+
+마이그레이션
+    python manage.py makemigrations polls
+    실제 테이블 생성 : python manage.py migrate
+
+파이썬 쉘 실행
+    python manage.py shell
+    from polls.models import Choice, Question
+    Question.objects.all()
+    from django.utils import timezone
+    q = Question(question_text="What's new?", pub_date=timezone.now())
+    q.save()
+    q.id
+    q.question_text
+    q.pub_date
+    q.question_text = "What's up?"
+    q.save()
+    Question.objects.all()
+
+    polls/models.py
+    from django.db import models
+
+    class Question(models.Model):
+        # ...
+        def __str__(self):
+            return self.question_text
+        def was_published_recently(self):
+            return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+    class Choice(models.Model):
+        # ...
+        def __str__(self):
+            return self.choice_text
+
+    ...
+
+    나머지는 https://docs.djangoproject.com/ko/5.0/intro/tutorial02/ 참고
